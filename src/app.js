@@ -1,12 +1,9 @@
 import React from 'react';
+import LoginTab from './loginTab.js'
 export default class App extends React.Component {
     render(){
         return(
-            <div id="center_div">
-                <div className="text">
-                    lol
-                </div>
-            </div>
+            <LoginTab/>
         );
     }
 }
