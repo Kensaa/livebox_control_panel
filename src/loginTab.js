@@ -1,9 +1,12 @@
 import React from 'react'
+import {HashRouter,Redirect,withRouter} from "react-router-dom";
+import livebox from './lib/livebox.js'
+const { ipcRenderer } = window.require('electron');
 
-export default class LoginTab extends React.Component {
+/*export default*/ class LoginTab extends React.Component {
     constructor(props){
         super(props)
-        this.state = {user:'',pass:''}
+        this.state = {user:'admin',pass:''}
         this.userChange = this.userChange.bind(this);
         this.passChange = this.passChange.bind(this);
 
@@ -21,12 +24,22 @@ export default class LoginTab extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.state);
+        
+        livebox.login('192.168.1.1',this.state.user,this.state.pass).then(res =>{
+            console.log(res);
+            console.log(ipcRenderer.sendSync('login', JSON.stringify(res)));
+            this.setState({redirect:<Redirect to={{
+                pathname:'/dashboard'
+            }}/>})
+        }).catch(err =>{
+            console.log(err);
+        })        
     }
 
     render(){
         return(
             <div id="login_div">
+                <HashRouter>{this.state.redirect}</HashRouter>
                 <form id="login_form" onSubmit={this.handleSubmit}>
                     <label className="login_label" htmlFor="userInput">
                         Username :
@@ -57,3 +70,4 @@ export default class LoginTab extends React.Component {
         );
     }
 }
+export default withRouter(LoginTab);
