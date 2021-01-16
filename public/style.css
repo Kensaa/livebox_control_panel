@@ -1,3 +1,18 @@
 body{
     background-color: rgb(34, 34, 34);
 }
+
+#root{
+    width: 100%;
+    height: 100%;
+}
+
+
+.login_label{
+    color: white;
+}
+
+.login_field{
+    margin-left: 10px;
+    margin-right: 10px;
+}
