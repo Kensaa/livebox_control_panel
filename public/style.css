@@ -1,5 +1,6 @@
 body{
     background-color: rgb(34, 34, 34);
+    
 }
 
 #root{
@@ -7,6 +8,16 @@ body{
     height: 100%;
 }
 
+#login_div{
+    margin-top: 200px;
+    display:flex;
+    justify-content:center;
+}
+#login_form{
+    padding: 10px;
+    border: solid white;
+
+}
 
 .login_label{
     color: white;
