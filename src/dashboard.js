@@ -1,5 +1,6 @@
 import React from 'react';
 import Widget from './widget'
+
 const { ipcRenderer } = window.require('electron');
 
 
@@ -7,6 +8,7 @@ export default class Dashboard extends React.Component{
     constructor(props){
         super(props);
         this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
+        console.log(JSON.stringify(this.loginData));
     }
     
     render(){
@@ -17,16 +19,15 @@ export default class Dashboard extends React.Component{
                 </div>
                 <div id="main_panel">
                     <div id="menu_div">
-                        <Widget text="Device" src="device"/>
-                        <Widget text="Wifi" src="wifi"/>
-                        <Widget text="Connect" src="connect"/>
-                        <Widget text="Network" src="network"/>
-                        <Widget text="Firewall" src="firewall"/>
-                        <Widget text="Restart" src="restart"/>
+                        <Widget text="Devices" src="device" href="/dashboard/devices"/>
+                        <Widget text="Wifi" src="wifi" href="/dashboard/wifi"/>
+                        <Widget text="Connection" src="connect" href="/dashboard/connection"/>
+                        <Widget text="Network" src="network" href="/dashboard/network"/>
+                        <Widget text="Firewall" src="firewall" href="/dashboard/firewall"/>
+                        <Widget text="Restart" src="restart" href="/dashboard/restart"/>
                     </div>
                 </div>
             </div>
-
         );
     }
 }

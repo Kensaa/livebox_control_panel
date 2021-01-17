@@ -1,12 +1,12 @@
 import React from 'react'
-import {HashRouter,Redirect,withRouter} from "react-router-dom";
+import {HashRouter,Redirect} from "react-router-dom";
 import livebox from './lib/livebox.js'
 const { ipcRenderer } = window.require('electron');
 
-/*export default*/ class LoginTab extends React.Component {
+export default class LoginTab extends React.Component {
     constructor(props){
         super(props)
-        this.state = {user:'admin',pass:''}
+        this.state = {user:'admin',pass:'72mDptUw'}
         this.userChange = this.userChange.bind(this);
         this.passChange = this.passChange.bind(this);
 
@@ -26,8 +26,7 @@ const { ipcRenderer } = window.require('electron');
         e.preventDefault();
         
         livebox.login('192.168.1.1',this.state.user,this.state.pass).then(res =>{
-            console.log(res);
-            console.log(ipcRenderer.sendSync('login', JSON.stringify(res)));
+            ipcRenderer.sendSync('login', JSON.stringify(res));
             this.setState({redirect:<Redirect to={{
                 pathname:'/dashboard'
             }}/>})
@@ -66,4 +65,3 @@ const { ipcRenderer } = window.require('electron');
         );
     }
 }
-export default withRouter(LoginTab);
