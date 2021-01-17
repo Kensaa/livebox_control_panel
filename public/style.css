@@ -53,11 +53,9 @@ body{
 }
 
 #menu_div{
-    play: block;
     align-self: center;
     margin-top: 10%;
     height: 60%;
-    border: 1px solid #8b8171;
     margin-left: 4%;
     margin-right: 4%;
 
