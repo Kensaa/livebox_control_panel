@@ -26,11 +26,12 @@ app.on('activate', function () {
 });
 
 ipcMain.on('login', function (event, arg) {
-    console.log(arg);
+    console.log('data sent :'+arg);
     loginData = arg;
     event.returnValue = 'done';
   });
 
 ipcMain.on('getLoginData', function (event, arg) {
     event.returnValue = loginData;
+    console.log('login data requested');
   });

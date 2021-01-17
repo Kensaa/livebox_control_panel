@@ -23,9 +23,9 @@ export default class Dashboard extends React.Component{
                         <Widget text="Network" src="network" href="/dashboard/network"/>
                         <Widget text="Restart" src="restart" href="/dashboard/restart"/>
                         <Widget text="Internet" src="internet" href="/dashboard/internet"/>
-                        {/*<Widget text="Wifi" src="wifi" href="/dashboard/wifi"/>*/}
-                        {/*<Widget text="Connection" src="connect" href="/dashboard/connection"/>*/}
-                        {/*<Widget text="Firewall" src="firewall" href="/dashboard/firewall"/>*/}
+                        {/*<Widget text="Wifi" src="wifi" href="/dashboard/wifi"/>
+                        <Widget text="Connection" src="connect" href="/dashboard/connection"/>
+                        <Widget text="Firewall" src="firewall" href="/dashboard/firewall"/>*/}
                     </div>
                 </div>
             </div>

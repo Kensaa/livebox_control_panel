@@ -1,5 +1,7 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
+const { ipcRenderer } = window.require('electron');
+
 
 export default class ConnectionTab extends React.Component{
 
@@ -7,6 +9,8 @@ export default class ConnectionTab extends React.Component{
         super(props);
         this.handleReturnButton = this.handleReturnButton.bind(this);
         this.state = {};
+        this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
+
     }
     handleReturnButton(e){
         this.setState({redirect:<Redirect to={{
