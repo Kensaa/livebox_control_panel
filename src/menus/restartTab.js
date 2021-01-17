@@ -7,6 +7,8 @@ export default class RestartTab extends React.Component{
     constructor(props){
         super(props);
         this.handleReturnButton = this.handleReturnButton.bind(this);
+        this.handleRestartButton = this.handleRestartButton.bind(this);
+
         this.state = {};
         this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
 
@@ -15,6 +17,15 @@ export default class RestartTab extends React.Component{
         this.setState({redirect:<Redirect to={{
             pathname:'/dashboard/'
         }}/>});
+    }
+
+    handleRestartButton(e){
+        let options = {
+            host:'192.168.1.1',
+            token:this.loginData.token,
+            cookie:this.loginData.cookie
+        } 
+        livebox.restart(options);
     }
 
     render(){
@@ -26,6 +37,7 @@ export default class RestartTab extends React.Component{
                 <h1 className="menutitle unselectable">Restart</h1>
             </div>
             <div className="main_panel">
+                <button className="restart_button" onClick={this.handleRestartButton}>RESTART</button>
             </div>
         </div>
         );

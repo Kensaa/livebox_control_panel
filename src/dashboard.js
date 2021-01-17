@@ -4,7 +4,6 @@ import Widget from './widget'
 export default class Dashboard extends React.Component{
     constructor(props){
         super(props);
-        console.log(JSON.stringify(this.loginData));
     }
     
     render(){
