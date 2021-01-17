@@ -5,7 +5,7 @@ let loginData;
 
 let mainWindow;
 function createWindow() {
-    mainWindow = new BrowserWindow({width: 1000, height: 800,webPreferences:{nodeIntegration: true}});
+    mainWindow = new BrowserWindow({width: 1250, height: 800,webPreferences:{nodeIntegration: true}});
     mainWindow.loadURL('http://localhost:3000');
     //mainWindow.webContents.openDevTools();
     mainWindow.on('closed', function () {

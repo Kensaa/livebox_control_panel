@@ -1,4 +1,5 @@
 import React from 'react';
+import Widget from './widget'
 const { ipcRenderer } = window.require('electron');
 
 
@@ -10,10 +11,25 @@ export default class Dashboard extends React.Component{
     
     render(){
         return(
-            <div>
-            <h4 className="text">{this.loginData.token}</h4>
-            <h4 className="text">{this.loginData.cookie}</h4>
+            <div id="dashboard_div">
+                <div id="titlebar">
+                    <h1 id="title">Livebox Control Panel</h1>
+                </div>
+                <div id="main_panel">
+                    <div id="menu_div">
+                        <Widget text="Device" src="device"/>
+                        <Widget text="Wifi" src="wifi"/>
+                        <Widget text="Connect" src="connect"/>
+                        <Widget text="Network" src="network"/>
+                        <Widget text="Firewall" src="firewall"/>
+                        <Widget text="Restart" src="restart"/>
+                        <Widget text="Wifi" src="wifi"/>
+
+
+                    </div>
+                </div>
             </div>
+
         );
     }
 }

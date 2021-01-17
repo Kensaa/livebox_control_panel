@@ -7,6 +7,7 @@ body{
     color: white;
 }
 
+
 #root{
     width: 100%;
     height: 100%;
@@ -30,4 +31,62 @@ body{
 .login_field{
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#title{
+    color: white;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#titlebar{
+    border-bottom: 3px solid #8b8171;
+}
+
+#main_panel{
+    margin-top: 50px;
+    border: 1px solid #8b8171;
+    height: 80%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+}
+
+#menu_div{
+    play: block;
+    align-self: center;
+    margin-top: 10%;
+    height: 60%;
+    border: 1px solid #8b8171;
+    margin-left: 4%;
+    margin-right: 4%;
+
+
+}
+
+.widget{
+    display: inline-block;
+    width: 150px;
+    height: 125px;
+    margin: 10px;
+    border: 1px solid #8b8171;
+
+}
+
+.widget_img{
+
+}
+.widget_textbox{
+    text-align: center;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-left: 2px;
+
+}
+
+.widget_text{
+    text-align: center;
+    font-size:15;
+    color: white;
+
 }
