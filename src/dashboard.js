@@ -23,8 +23,6 @@ export default class Dashboard extends React.Component{
                         <Widget text="Network" src="network"/>
                         <Widget text="Firewall" src="firewall"/>
                         <Widget text="Restart" src="restart"/>
-
-
                     </div>
                 </div>
             </div>

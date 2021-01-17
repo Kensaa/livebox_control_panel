@@ -44,18 +44,15 @@ const { ipcRenderer } = window.require('electron');
                     <label className="login_label" htmlFor="userInput">
                         Username :
                     </label>
-
                     <input 
                     id="userInput"
                     className="login_field"
                     onChange={this.userChange}
                     value={this.state.user}>
                     </input>
-
                     <label className="login_label" htmlFor="passInput">
                         Password :
                     </label>
-
                     <input 
                     id="passInput"
                     className="login_field"
@@ -63,7 +60,6 @@ const { ipcRenderer } = window.require('electron');
                     onChange={this.passChange}
                     value={this.state.pass}>
                     </input>
-
                     <button id="login_btn">Login</button>
                 </form>
             </div>
