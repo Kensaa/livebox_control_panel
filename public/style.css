@@ -86,10 +86,21 @@ body{
 }
 
 .returnButton{
-    position: relative;
-    margin-top: 5px;
+    margin-top: 8px;
     margin-left: 5px;
+    margin-bottom: 0px;
     width: 80px;
     height: 30px;
 
+}
+
+.menutitle{
+    /*text-align: center;*/
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.menutitlebar{
+    display: flex;
+    border-bottom: 3px solid var(--accent-color);
 }
