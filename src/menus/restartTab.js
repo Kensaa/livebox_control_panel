@@ -16,10 +16,13 @@ export default class RestartTab extends React.Component{
     render(){
         return(
         <div>
-            <HashRouter>
-                {this.state.redirect}
-            </HashRouter>
-            <button onClick={this.handleReturnButton}>return</button>
+            <HashRouter>{this.state.redirect}</HashRouter>
+            <div className="titlebar">
+                <h1 className="title">Restart</h1>
+            </div>
+            <div className="main_panel">
+                <button className="returnButton" onClick={this.handleReturnButton}>return</button>
+            </div>
         </div>
         );
     }

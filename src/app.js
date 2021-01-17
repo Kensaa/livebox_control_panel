@@ -10,6 +10,8 @@ import ConnectionTab from './menus/connectionTab'
 import NetworkTab from './menus/networkTab'
 import FirewallTab from './menus/firewallTab'
 import RestartTab from './menus/restartTab'
+import InternetTab from './menus/internetTab'
+
 
 import LoginTab from './loginTab.js'
 import Dashboard from './dashboard.js'
@@ -27,6 +29,8 @@ export default class App extends React.Component {
                 <Route path="/dashboard/network" component={NetworkTab}></Route>
                 <Route path="/dashboard/firewall" component={FirewallTab}></Route>
                 <Route path="/dashboard/restart" component={RestartTab}></Route>
+                <Route path="/dashboard/internet" component={InternetTab}></Route>
+
 
             </HashRouter>
         );

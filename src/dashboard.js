@@ -14,17 +14,18 @@ export default class Dashboard extends React.Component{
     render(){
         return(
             <div id="dashboard_div">
-                <div id="titlebar">
-                    <h1 id="title">Livebox Control Panel</h1>
+                <div className="titlebar">
+                    <h1 className="title">Livebox Control Panel</h1>
                 </div>
-                <div id="main_panel">
-                    <div id="menu_div">
+                <div className="main_panel">
+                    <div className="menu_div">
                         <Widget text="Devices" src="device" href="/dashboard/devices"/>
-                        <Widget text="Wifi" src="wifi" href="/dashboard/wifi"/>
-                        <Widget text="Connection" src="connect" href="/dashboard/connection"/>
                         <Widget text="Network" src="network" href="/dashboard/network"/>
-                        <Widget text="Firewall" src="firewall" href="/dashboard/firewall"/>
                         <Widget text="Restart" src="restart" href="/dashboard/restart"/>
+                        <Widget text="Internet" src="internet" href="/dashboard/internet"/>
+                        {/*<Widget text="Wifi" src="wifi" href="/dashboard/wifi"/>*/}
+                        {/*<Widget text="Connection" src="connect" href="/dashboard/connection"/>*/}
+                        {/*<Widget text="Firewall" src="firewall" href="/dashboard/firewall"/>*/}
                     </div>
                 </div>
             </div>
