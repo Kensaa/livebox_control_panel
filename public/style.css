@@ -104,3 +104,33 @@ body{
     display: flex;
     border-bottom: 3px solid var(--accent-color);
 }
+
+.unselectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+    
+}
+
+.info_row{
+    margin-top: 10px;
+    display: flex;
+    border: 1px solid var(--accent-color)
+}
+
+.info_row_title{
+    margin-left: 50px;
+    margin-right:50px;
+}
+
+.info_row_title_text{
+    font-weight: 700;
+}
+
+.info_row_value{
+
+}
+.info_row_value_text{
+    
+}

@@ -255,5 +255,33 @@ async function getWanSpeed(options){
   });
 }
 
-module.exports = {login, getSchedulerRaw, getScheduleInfo, toggleScheduler, changeSchedulerState, overrideScheduler, getWanStatus, getWanSpeed};
+async function restart(options){
+  let req = {
+    "service": "NMC",
+    "method": "reboot",
+    "parameters": {
+      "reason": "GUI_Reboot"
+    }
+  };
+
+  let reqOptions = {
+    hostname: options.host,
+    path: "/ws",
+    method: "POST",
+    headers: {
+      "authorization": `X-Sah ${options.token}`,
+      "content-type": "application/x-sah-ws-4-call+json",
+      "cookie":options.cookie
+    }
+  }
+
+  return new Promise((resolve,reject)=>{
+    request(req,reqOptions).then((data) =>{
+      let json = JSON.parse(data.data);
+      resolve(json);
+    });
+  });
+}
+
+module.exports = {login, getSchedulerRaw, getScheduleInfo, toggleScheduler, changeSchedulerState, overrideScheduler, getWanStatus, getWanSpeed, restart};
 

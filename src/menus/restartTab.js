@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
+import livebox from '../lib/livebox'
 const { ipcRenderer } = window.require('electron');
 
 export default class RestartTab extends React.Component{
@@ -22,7 +23,7 @@ export default class RestartTab extends React.Component{
             <HashRouter>{this.state.redirect}</HashRouter>
             <div className="menutitlebar">
                 <button className="returnButton" onClick={this.handleReturnButton}>return</button>
-                <h1 className="menutitle">Restart</h1>
+                <h1 className="menutitle unselectable">Restart</h1>
             </div>
             <div className="main_panel">
             </div>
