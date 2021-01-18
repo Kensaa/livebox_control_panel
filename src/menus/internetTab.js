@@ -43,7 +43,7 @@ export default class InternetTab extends React.Component{
                     <h1 className="menutitle unselectable">Internet</h1>
                 </div>
                 <div className="main_panel">
-                    <InfoLine title="State" value={this.state.wanstatus.status ? 'true' : 'false'}/>
+                    <InfoLine title="State" value={this.state.wanstatus.status ? 'Working' : 'Not Working'}/>
                     <InfoLine title="IP Address" value={this.state.wanstatus.data.IPAddress}/>
                     <InfoLine title="Mac Address" value={this.state.wanstatus.data.MACAddress}/>
                     <InfoLine title="Type" value={this.state.wanspeed.status.dsl.dsl0.ModulationType}/>
