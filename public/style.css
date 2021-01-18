@@ -134,3 +134,32 @@ body{
 .info_row_value_text{
     
 }
+
+.devicelist{
+    float: left;
+    width:300px;
+}
+
+
+
+.device-name{
+    border-bottom: solid 1px;
+    padding-bottom: 3px;
+}
+
+.devicelist-wifi-title{
+    text-align: center;
+    border: 1px solid;
+    margin-top:10px;
+    margin-left: 2px;
+}
+
+.devicelist-ethernet-title{
+    text-align: center;
+    border: 1px solid;
+    margin-top:10px;
+    margin-left: 2px;
+
+
+    
+}
