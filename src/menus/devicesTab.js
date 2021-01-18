@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
+import DeviceDetail from './utils/DeviceDetail'
 import livebox from '../lib/livebox'
 const { ipcRenderer } = window.require('electron');
 
@@ -41,12 +42,14 @@ export default class DevicesTab extends React.Component{
     
 
     handleEthernetClick(e,device){
-        console.log(device.Name);
+        this.setState({selected:''});
+        this.setState({selected:<DeviceDetail device={JSON.stringify(device)}/>});
+
     }
 
     handleWifiClick(e,device){
-        console.log(device.Name);
-
+        this.setState({selected:''});
+        this.setState({selected:<DeviceDetail device={JSON.stringify(device)}/>});
     }
 
     render(){
@@ -60,11 +63,10 @@ export default class DevicesTab extends React.Component{
             <div className="main_panel">
                 <div className="devicelist">
                     <div className="devicelist-ethernet">
-                        <div className="devicelist-ethernet-title">
+                        <div className="devicelist-ethernet-title unselectable">
                             <span>Ethernet</span>
                         </div>
                         <div className="devicelist-ethernet-children">
-                            
                             <ul>
                                 {this.state.devices.status.ETHERNET.map(device =>(
                                     <li key={device.Key} className="unselectable device-name" onClick={(e) => this.handleEthernetClick(e,device)}>{device.Name}</li>
@@ -74,19 +76,21 @@ export default class DevicesTab extends React.Component{
                         </div>
                     </div>
                     <div className="devicelist-wifi">
-                        <div className="devicelist-wifi-title">
+                        <div className="devicelist-wifi-title unselectable">
                             <span>Wifi</span> 
                         </div>
                         <div className="devicelist-wifi-children">
-                            
                             <ul>
                                 {this.state.devices.status.WIFI.map(device =>(
                                     <li key={device.Key} device={device} className="unselectable device-name" key={device.Key} onClick={(e) => this.handleWifiClick(e,device)}>{device.Name}</li>
                                 ))}
-                                </ul>
+                            </ul>
                             
                         </div>
                     </div>
+                </div>
+                <div className="device-detail-div">
+                    {this.state.selected}
                 </div>
             </div>
         </div>
