@@ -17,7 +17,6 @@ export default class DeviceDetail extends React.Component{
     }
 
     getInfo(){
-        
         this.device = JSON.parse(this.props.device);
 
         let options = {
@@ -33,6 +32,7 @@ export default class DeviceDetail extends React.Component{
             //console.log(res);
         });
         
+        
     }
 
     render(){
@@ -40,15 +40,14 @@ export default class DeviceDetail extends React.Component{
             this.getInfo();
         }
         
-        
         let a = []
         a.push({title:"IP",value:this.state.detail.status.IPAddress});
         a.push({title:"MAC",value:this.state.detail.status.Key});
-        a.push({title:"DeviceType",value:this.state.detail.status.DeviceType});
+        a.push({title:"Device Type",value:this.state.detail.status.DeviceType});
         a.push({title:"Port",value:this.state.detail.status.InterfaceName});
         a.push({title:"First Time Seen",value:this.formatDate(this.state.detail.status.FirstSeen)});
         a.push({title:"Last Connection",value:this.formatDate(this.state.detail.status.LastConnection)});
-
+        
         this.state.detail = {status:{}};
         return(
             <div className="device-detail">
@@ -67,18 +66,17 @@ export default class DeviceDetail extends React.Component{
 
     formatDate(input){
         if(input == undefined)return;
-
         //input format : 2021-01-19T23:11:08Z
         //output format : 19-01-2021 23:11:08
         let date = input.substring(0,input.indexOf('T'));
         let time = input.substring(input.indexOf('T')+1,input.length-1);
+        
         //change date format from na to eu
         //2021-01-19 ==> 19-01-2021
         let dateS = date.split('-');
         date = dateS[2]+'-'+dateS[1]+'-'+dateS[0]
 
         //return new date and time
-
         let final = date+' '+time;
         return final;
 
