@@ -4,10 +4,10 @@ import {
     Route
 } from "react-router-dom";
 
-import DevicesTab from './menus/devicesTab'
-import NetworkTab from './menus/networkTab'
-import RestartTab from './menus/restartTab'
-import InternetTab from './menus/internetTab'
+import DevicesTab from './menus/tabs/devices/devicesTab'
+import NetworkTab from './menus/tabs/network/networkTab'
+import RestartTab from './menus/tabs/restart/restartTab'
+import InternetTab from './menus/tabs/internet/internetTab'
 
 
 import LoginTab from './loginTab.js'
@@ -21,7 +21,7 @@ export default class App extends React.Component {
                 <Route exact path="/dashboard" component={Dashboard}/>
 
                 <Route path="/dashboard/devices" component={DevicesTab}></Route>
-                <Route path="/dashboard/network" component={NetworkTab}></Route>
+                <Route exact path="/dashboard/network" component={NetworkTab}></Route>
                 <Route path="/dashboard/restart" component={RestartTab}></Route>
                 <Route path="/dashboard/internet" component={InternetTab}></Route>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
-import DeviceDetail from './utils/DeviceDetail'
-import livebox from '../lib/livebox'
+import DeviceDetail from './DeviceDetail'
+import livebox from '../../../lib/livebox'
 const { ipcRenderer } = window.require('electron');
 
 

@@ -12,11 +12,10 @@ export default class Dashboard extends React.Component{
                 </div>
                 <div className="main_panel">
                     <div className="menu_div">
-                        <Widget text="Devices" src="device" href="/dashboard/devices"/>
-                        <Widget text="Network" src="network" href="/dashboard/network"/>
-                        <Widget text="Restart" src="restart" href="/dashboard/restart"/>
-                        <Widget text="Internet" src="internet" href="/dashboard/internet"/>
-
+                        <Widget text="Devices" imgsrc="device" href="/dashboard/devices"/>
+                        <Widget text="Network" imgsrc="network" href="/dashboard/network"/>
+                        <Widget text="Restart" imgsrc="restart" href="/dashboard/restart"/>
+                        <Widget text="Internet" imgsrc="internet" href="/dashboard/internet"/>
                     </div>
                 </div>
             </div>

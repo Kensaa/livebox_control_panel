@@ -1,6 +1,6 @@
 import React from 'react';
-import InfoLine from './InfoLine';
-import livebox from '../../lib/livebox'
+import InfoLine from '../utils/InfoLine';
+import livebox from '../../../lib/livebox'
 
 
 const { ipcRenderer } = window.require('electron');
@@ -11,7 +11,6 @@ export default class DeviceDetail extends React.Component{
         this.state = {detail:{status:{}}}
 
         this.gotinfo = false;
-        //this.detail = {status:{}};
         this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
         this.getInfo = this.getInfo.bind(this);
         this.device = JSON.parse(this.props.device);

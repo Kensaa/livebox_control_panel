@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
-import livebox from '../lib/livebox'
+import livebox from '../../../lib/livebox'
 const { ipcRenderer } = window.require('electron');
 
 export default class NetworkTab extends React.Component{

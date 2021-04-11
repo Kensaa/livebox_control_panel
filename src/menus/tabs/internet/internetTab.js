@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
-import InfoLine from './utils/InfoLine';
-import livebox from '../lib/livebox'
+import InfoLine from '../utils/InfoLine';
+import livebox from '../../../lib/livebox'
 const { ipcRenderer } = window.require('electron');
 
 export default class InternetTab extends React.Component{
