@@ -34,7 +34,7 @@ export default class InternetTab extends React.Component{
     }
 
     render(){
-
+        
         return(
             <div>
                 <HashRouter>{this.state.redirect}</HashRouter>
@@ -47,6 +47,7 @@ export default class InternetTab extends React.Component{
                     <InfoLine title="IP Address" value={this.state.wanstatus.data.IPAddress}/>
                     <InfoLine title="Mac Address" value={this.state.wanstatus.data.MACAddress}/>
                     <InfoLine title="Type" value={this.state.wanspeed.status.dsl.dsl0.ModulationType}/>
+                    
 
                     
                 </div>

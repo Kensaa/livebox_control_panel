@@ -9,6 +9,8 @@ export default class DeviceDetail extends React.Component{
     constructor(props){
         super(props);
         this.state = {detail:{status:{}}}
+
+        this.gotinfo = false;
         //this.detail = {status:{}};
         this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
         this.getInfo = this.getInfo.bind(this);
@@ -36,8 +38,9 @@ export default class DeviceDetail extends React.Component{
     }
 
     render(){
-        if(this.state.detail.status.Name == undefined){
+        if(!this.gotinfo){
             this.getInfo();
+            this.gotinfo = true;
         }
         
         let a = []
@@ -48,7 +51,7 @@ export default class DeviceDetail extends React.Component{
         a.push({title:"First Time Seen",value:this.formatDate(this.state.detail.status.FirstSeen)});
         a.push({title:"Last Connection",value:this.formatDate(this.state.detail.status.LastConnection)});
         
-        this.state.detail = {status:{}};
+        this.gotinfo = false;
         return(
             <div className="device-detail">
                 <div className="device-detail-title-div">
@@ -65,7 +68,7 @@ export default class DeviceDetail extends React.Component{
     }
 
     formatDate(input){
-        if(input == undefined)return;
+        if(input === undefined)return;
         //input format : 2021-01-19T23:11:08Z
         //output format : 19-01-2021 23:11:08
         let date = input.substring(0,input.indexOf('T'));

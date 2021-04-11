@@ -2,9 +2,7 @@ import React from 'react';
 import Widget from './widget'
 
 export default class Dashboard extends React.Component{
-    constructor(props){
-        super(props);
-    }
+    
     
     render(){
         return(

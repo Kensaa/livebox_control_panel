@@ -1,5 +1,4 @@
 const http = window.require("http");
-
 async function request(req,reqOptions){
   return new Promise((resolve,reject)=>{
     http.request(reqOptions,res =>{
@@ -91,7 +90,7 @@ async function getSchedulerRaw(options){
 async function getScheduleInfo(options){
   return new Promise((resolve,reject)=> {
     getSchedulerRaw(options).then((res)=>{
-      if(res.status === false){
+      if(!res.status){
         resolve(null);
       }else{
         resolve(res.data.scheduleInfo);
@@ -311,6 +310,7 @@ async function getDevicesRaw(options){
     });
   });
 }
+
 async function getDeviceDetail(options){
   let req = {
     "service": "Devices.Device."+options.info.mac,
@@ -335,5 +335,144 @@ async function getDeviceDetail(options){
   });
 }
 
-module.exports = {login, getSchedulerRaw, getScheduleInfo, toggleScheduler, changeSchedulerState, overrideScheduler, getWanStatus, getWanSpeed, restart, getDevicesRaw, getDeviceDetail};
+async function getPortForwarding(options){
+  let req = {
+    "service": "Firewall",
+    "method": "getPortForwarding",
+    "parameters": {
+      "origin": "webui"
+    }
+  };
+  let reqOptions = {
+    hostname: options.host,
+    path: "/ws",
+    method: "POST",
+    headers: {
+      "authorization": `X-Sah ${options.token}`,
+      "content-type": "application/x-sah-ws-4-call+json",
+      "cookie":options.cookie
+    }
+  }
+  return new Promise((resolve,reject)=>{
+    request(req,reqOptions).then((data) =>{
+      let json = JSON.parse(data.data);
+      resolve(json);
+    });
+  });
+}
+
+async function setPortForwarding(options){
+  let req = {
+    "service": "Firewall",
+    "method": "setPortForwarding",
+    "parameters": {
+      "id": options.info.id,
+      "internalPort": options.info.internalPort,
+      "externalPort": options.info.externalPort,
+      "destinationIPAddress": options.info.destinationIPAddress,
+      "enable": true,
+      "persistent": true,
+      "protocol": "6",
+      "description": options.info.description,
+      "sourceInterface": "data",
+      "origin": "webui",
+      "destinationMACAddress": ""
+    }
+  };
+  let reqOptions = {
+    hostname: options.host,
+    path: "/ws",
+    method: "POST",
+    headers: {
+      "authorization": `X-Sah ${options.token}`,
+      "content-type": "application/x-sah-ws-4-call+json",
+      "cookie":options.cookie
+    }
+  }
+  return new Promise((resolve,reject)=>{
+    request(req,reqOptions).then((data) =>{
+      let json = JSON.parse(data.data);
+      resolve(json);
+    });
+  });
+}
+
+async function getStaticIps(options){
+  let req = {
+    "service": "DHCPv4.Server.Pool.default",
+    "method": "getStaticLeases",
+    "parameters": "default"
+  }
+  let reqOptions = {
+    hostname: options.host,
+    path: "/ws",
+    method: "POST",
+    headers: {
+      "authorization": `X-Sah ${options.token}`,
+      "content-type": "application/x-sah-ws-4-call+json",
+      "cookie":options.cookie
+    }
+  }
+  return new Promise((resolve,reject)=>{
+    request(req,reqOptions).then((data) =>{
+      let json = JSON.parse(data.data);
+      resolve(json);
+    });
+  });
+}
+
+async function setStaticIp(options){
+  let req = {
+    "service": "DHCPv4.Server.Pool.default",
+    "method": "addStaticLease",
+    "parameters": {
+      "MACAddress": options.info.mac,
+      "IPAddress": options.info.ip
+    }
+  }
+  let reqOptions = {
+    hostname: options.host,
+    path: "/ws",
+    method: "POST",
+    headers: {
+      "authorization": `X-Sah ${options.token}`,
+      "content-type": "application/x-sah-ws-4-call+json",
+      "cookie":options.cookie
+    }
+  }
+  return new Promise((resolve,reject)=>{
+    request(req,reqOptions).then((data) =>{
+      let json = JSON.parse(data.data);
+      resolve(json);
+    });
+  });
+}
+
+
+async function deleteStaticIp(options){
+  let req = {
+    "service": "DHCPv4.Server.Pool.default",
+    "method": "deleteStaticLease",
+    "parameters": {
+      "MACAddress": options.info.mac
+    }
+  }
+  let reqOptions = {
+    hostname: options.host,
+    path: "/ws",
+    method: "POST",
+    headers: {
+      "authorization": `X-Sah ${options.token}`,
+      "content-type": "application/x-sah-ws-4-call+json",
+      "cookie":options.cookie
+    }
+  }
+  return new Promise((resolve,reject)=>{
+    request(req,reqOptions).then((data) =>{
+      let json = JSON.parse(data.data);
+      resolve(json);
+    });
+  });
+}
+module.exports = {login, getSchedulerRaw, getScheduleInfo, toggleScheduler, changeSchedulerState, overrideScheduler, getWanStatus, getWanSpeed, restart, getDevicesRaw, getDeviceDetail, getPortForwarding, setPortForwarding, getStaticIps, setStaticIp, deleteStaticIp};
 

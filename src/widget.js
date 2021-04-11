@@ -22,7 +22,7 @@ export default class Widget extends React.Component{
             <div className="widget" onClick={this.handleClick}>
                 <HashRouter>{this.state.redirect}</HashRouter>
                 <div className="widget_img">
-                    <img src={"http://localhost:3000/img/"+this.props.src+".png"} alt="joli img"></img>
+                    <img className="unselectable" src={"http://localhost:3000/img/"+this.props.src+".png"} alt="joli img"></img>
                 </div>
                 <div className="widget_textbox">
                     <span className="widget_text unselectable">{this.props.text}</span>

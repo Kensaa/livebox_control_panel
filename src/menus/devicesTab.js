@@ -10,8 +10,7 @@ export default class DevicesTab extends React.Component{
     constructor(props){
         super(props);
         this.handleReturnButton = this.handleReturnButton.bind(this);
-        this.handleWifiClick = this.handleWifiClick.bind(this);
-        this.handleEthernetClick = this.handleEthernetClick.bind(this);
+        this.handleDeviceClick = this.handleDeviceClick.bind(this);
 
         this.getInfo = this.getInfo.bind(this);
 
@@ -34,23 +33,18 @@ export default class DevicesTab extends React.Component{
             cookie:this.loginData.cookie
         }
         livebox.getDevicesRaw(options).then(res =>{
-            //console.log(res);
             this.setState({devices:res})
         });
     }
 
     
 
-    handleEthernetClick(e,device){
-        this.setState({selected:''});
+    handleDeviceClick(e,device){
         this.setState({selected:<DeviceDetail device={JSON.stringify(device)}/>});
 
     }
 
-    handleWifiClick(e,device){
-        this.setState({selected:''});
-        this.setState({selected:<DeviceDetail device={JSON.stringify(device)}/>});
-    }
+
 
     render(){
         return(
@@ -69,7 +63,7 @@ export default class DevicesTab extends React.Component{
                         <div className="devicelist-ethernet-children">
                             <ul>
                                 {this.state.devices.status.ETHERNET.map(device =>(
-                                    <li key={device.Key} className="unselectable device-name" onClick={(e) => this.handleEthernetClick(e,device)}>{device.Name}</li>
+                                    <li key={device.Key} className="unselectable device-name" onClick={(e) => this.handleDeviceClick(e,device)}>{device.Name}</li>
                                 ))}
                             </ul>
                             
@@ -82,7 +76,7 @@ export default class DevicesTab extends React.Component{
                         <div className="devicelist-wifi-children">
                             <ul>
                                 {this.state.devices.status.WIFI.map(device =>(
-                                    <li key={device.Key} device={device} className="unselectable device-name" key={device.Key} onClick={(e) => this.handleWifiClick(e,device)}>{device.Name}</li>
+                                    <li key={device.Key} device={device} className="unselectable device-name" onClick={(e) => this.handleDeviceClick(e,device)}>{device.Name}</li>
                                 ))}
                             </ul>
                             
