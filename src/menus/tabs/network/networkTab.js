@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect,HashRouter} from "react-router-dom";
 import livebox from '../../../lib/livebox'
+import Widget from '../utils/widget'
 const { ipcRenderer } = window.require('electron');
 
 export default class NetworkTab extends React.Component{
@@ -43,7 +44,11 @@ export default class NetworkTab extends React.Component{
                 <h1 className="menutitle unselectable">Network</h1>
             </div>
             <div className="main_panel">
+                <div className="menu_div">
+                    <Widget text="DHCP" imgsrc="network" href="/dashboard/network/dhcp"/>
+                    <Widget text="NAT" imgsrc="network" href="/dashboard/network/nat"/>
 
+                </div>
             </div>
         </div>
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import Widget from './widget'
+import Widget from './menus/tabs/utils/widget'
 
 export default class Dashboard extends React.Component{
     
