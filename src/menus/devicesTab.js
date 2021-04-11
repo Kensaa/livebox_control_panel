@@ -18,6 +18,11 @@ export default class DevicesTab extends React.Component{
         this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
         this.getInfo();
 
+        this.deviceBlacklist = 
+        [
+            "liveplug"
+        ];
+
 
     }
     handleReturnButton(e){
@@ -33,6 +38,24 @@ export default class DevicesTab extends React.Component{
             cookie:this.loginData.cookie
         }
         livebox.getDevicesRaw(options).then(res =>{
+            res.status.ETHERNET=res.status.ETHERNET.filter(device => {
+                let ret = true
+                for(let blacklist of this.deviceBlacklist){
+                    ret = !device.Name.toLowerCase().includes(blacklist.toLowerCase())
+                    if(!ret)break;
+                }
+                return ret;
+            });
+
+            res.status.WIFI=res.status.WIFI.filter(device => {
+                let ret = true
+                for(let blacklist of this.deviceBlacklist){
+                    ret = !device.Name.toLowerCase().includes(blacklist.toLowerCase())
+                    if(!ret)break;
+                }
+                return ret;
+            });
+
             this.setState({devices:res})
         });
     }

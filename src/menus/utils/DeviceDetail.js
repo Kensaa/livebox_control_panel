@@ -31,7 +31,6 @@ export default class DeviceDetail extends React.Component{
         };
         livebox.getDeviceDetail(options).then(res =>{
             this.setState({detail:res})
-            //console.log(res);
         });
         
         
@@ -59,7 +58,7 @@ export default class DeviceDetail extends React.Component{
                 </div>
                 <div className="device-detail-content">
                     {a.map(info =>(
-                        <InfoLine title={info.title} value={info.value}/>
+                        <InfoLine key={a.indexOf(info)} title={info.title} value={info.value}/>
                     ))}
                 </div>
                 
