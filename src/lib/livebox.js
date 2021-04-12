@@ -375,7 +375,7 @@ async function setPortForwarding(options){
       "protocol": "6",
       "description": options.info.description,
       "sourceInterface": "data",
-      "origin": "webui",
+      "origin": " ",
       "destinationMACAddress": ""
     }
   };

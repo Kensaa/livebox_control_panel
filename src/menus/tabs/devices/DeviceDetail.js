@@ -13,19 +13,26 @@ export default class DeviceDetail extends React.Component{
         this.gotinfo = false;
         this.loginData = JSON.parse(ipcRenderer.sendSync('getLoginData'));
         this.getInfo = this.getInfo.bind(this);
-        this.device = JSON.parse(this.props.device);
         this.getInfo();
+        console.log('called');
     }
 
     getInfo(){
-        this.device = JSON.parse(this.props.device);
+        let mac = ''
+        if(this.props.device){
+            this.device = JSON.parse(this.props.device);
+            mac = this.device.Key
+        }else if(this.props.mac){
+            mac = this.props.mac.toUpperCase()
+        }
+        
 
         let options = {
             host:'192.168.1.1',
             token:this.loginData.token,
             cookie:this.loginData.cookie,
             info:{
-                mac:JSON.parse(this.props.device).Key
+                mac
             }
         };
         livebox.getDeviceDetail(options).then(res =>{
@@ -39,9 +46,14 @@ export default class DeviceDetail extends React.Component{
         if(!this.gotinfo){
             this.getInfo();
             this.gotinfo = true;
+            return(<div></div>)
         }
+        this.gotinfo = false;
+
+        if(!this.state.detail.status)return(<div>no info</div>)
         
         let a = []
+        console.log(this.state.detail);
         a.push({title:"IP",value:this.state.detail.status.IPAddress});
         a.push({title:"MAC",value:this.state.detail.status.Key});
         a.push({title:"Device Type",value:this.state.detail.status.DeviceType});
@@ -49,11 +61,10 @@ export default class DeviceDetail extends React.Component{
         a.push({title:"First Time Seen",value:this.formatDate(this.state.detail.status.FirstSeen)});
         a.push({title:"Last Connection",value:this.formatDate(this.state.detail.status.LastConnection)});
         
-        this.gotinfo = false;
         return(
             <div className="device-detail">
                 <div className="device-detail-title-div">
-                    <span className="device-detail-title">{this.device.Name}</span>
+                    <span className="device-detail-title">{this.state.detail.status.Name}</span>
                 </div>
                 <div className="device-detail-content">
                     {a.map(info =>(
