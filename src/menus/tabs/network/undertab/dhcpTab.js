@@ -33,7 +33,12 @@ export default class DHCPTab extends React.Component{
         }
 
         livebox.getStaticIps(options).then(res =>{
-            console.log(res);
+            res.status = res.status.sort((a,b) =>{
+                let sa = a.IPAddress.split('.')
+                let sb = b.IPAddress.split('.')
+
+                return sa[sa.length-1] - sb[sb.length-1];
+            })
             this.setState({staticIps:res})
         });
     }
@@ -47,25 +52,23 @@ export default class DHCPTab extends React.Component{
                 <h1 className="menutitle unselectable">DHCP</h1>
             </div>
             <div className="main_panel">
-            <div className="devicelist">
+                <div className="devicelist">
                     <div className="devicelist-ethernet">
                         <div className="devicelist-ethernet-title unselectable">
                             <span>STATIC IP</span>
                         </div>
                         <div className="devicelist-ethernet-children">
-                        <ul>
-                            {this.state.staticIps.status.map(device =>{
-                                
-                                return(<li key={device.MACAddress} onClick={(e) => this.handleClick(e,device)}>{device.IPAddress}</li>)
-                            })
-                            }
-                            </ul>
-                            
+                            <ul>
+                                {this.state.staticIps.status.map(device =>{
+                                    
+                                    return(<li key={device.MACAddress} onClick={(e) => this.handleClick(e,device)}>{device.IPAddress}</li>)
+                                })}
+                            </ul>     
                         </div>
-                    </div>
+                     </div>
                 </div>
                 <div className="device-detail-div">
-                    {this.state.selected}
+                        {this.state.selected}
                 </div>
             </div>
         </div>
